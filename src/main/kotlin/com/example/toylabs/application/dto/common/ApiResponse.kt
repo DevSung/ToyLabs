@@ -1,30 +1,39 @@
-package com.example.toylabs.application.dto.common;
+package com.example.toylabs.application.dto.common
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Builder;
-import org.springframework.http.HttpStatus;
+import com.fasterxml.jackson.annotation.JsonInclude
+import org.springframework.http.HttpStatus
 
-@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public record ApiResponse(Integer status,
-                          String message,
-                          Object data) {
+data class ApiResponse(
+    val status: Int,
+    val message: String,
+    val data: Any? = null
+) {
+    companion object {
+        private val DEFAULT_STATUS = HttpStatus.OK.value()
+        private const val DEFAULT_MESSAGE = "success"
 
-    private static final String DEFAULT_MESSAGE = "success";
+        fun default(): ApiResponse {
+            return ApiResponse(
+                status = DEFAULT_STATUS,
+                message = DEFAULT_MESSAGE
+            )
+        }
 
-    public ApiResponse(Object data) {
-        this(
-                HttpStatus.OK.value(),
-                DEFAULT_MESSAGE,
-                data
-        );
-    }
+        fun success(data: Any? = null): ApiResponse {
+            return ApiResponse(
+                status = DEFAULT_STATUS,
+                message = DEFAULT_MESSAGE,
+                data = data
+            )
+        }
 
-    public ApiResponse(String message, HttpStatus status) {
-        this(
-                status.value(),
-                message,
-                null
-        );
+        fun error(code: HttpStatus, message: String): ApiResponse {
+            return ApiResponse(
+                status = code.value(),
+                message = message
+            )
+        }
+
     }
 }
