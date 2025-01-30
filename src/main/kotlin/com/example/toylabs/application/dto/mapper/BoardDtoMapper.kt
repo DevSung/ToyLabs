@@ -1,6 +1,6 @@
 package com.example.toylabs.application.dto.mapper
 
-import com.example.toylabs.application.dto.board.BoardResponse
+import com.example.toylabs.application.dto.board.response.BoardResponse
 import com.example.toylabs.domain.model.board.Board
 import org.springframework.stereotype.Component
 

@@ -1,4 +1,4 @@
-package com.example.toylabs.application.dto.board
+package com.example.toylabs.application.dto.board.response
 
 import java.time.LocalDateTime
 

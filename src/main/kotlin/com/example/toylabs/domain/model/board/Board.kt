@@ -2,11 +2,11 @@ package com.example.toylabs.domain.model.board
 
 import java.time.LocalDateTime
 
-class Board(
+data class Board(
     val id: Long,
-    val title: String,
-    val content: String,
-    val writer: String,
+    var title: String,
+    var content: String,
+    var writer: String,
     val createdAt: LocalDateTime,
-    val updatedAt: LocalDateTime,
+    var updatedAt: LocalDateTime,
 )

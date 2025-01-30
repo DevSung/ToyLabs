@@ -1,4 +1,4 @@
-package com.example.toylabs.infrastructure.persistence.mapper.board
+package com.example.toylabs.infrastructure.persistence.mapper
 
 import com.example.toylabs.domain.model.board.Board
 import com.example.toylabs.infrastructure.persistence.enitty.board.BoardEntity
@@ -6,6 +6,6 @@ import org.mapstruct.Mapper
 
 @Mapper(componentModel = "spring")
 interface BoardMapper {
-    fun toModel(board: BoardEntity): Board
-    fun toEntity(board: Board): BoardEntity
+    fun toBoard(board: BoardEntity): Board
+    fun toBoardEntity(board: Board): BoardEntity
 }

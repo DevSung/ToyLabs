@@ -5,10 +5,12 @@ plugins {
     kotlin("plugin.jpa") version "1.9.25"
     id("org.springframework.boot") version "3.4.1"
     id("io.spring.dependency-management") version "1.1.7"
+    id("org.asciidoctor.jvm.convert") version "3.3.2"
 }
 
 val mariadbVersion = "3.1.4"
 val mapstructVersion = "1.5.3.Final"
+val jwtVersion = "0.11.5"
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
@@ -30,6 +32,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 
     // Kotlin 관련 의존성
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -45,11 +48,17 @@ dependencies {
     implementation("org.mapstruct:mapstruct:$mapstructVersion")
     kapt("org.mapstruct:mapstruct-processor:$mapstructVersion")
 
+    //jwt
+    implementation("io.jsonwebtoken:jjwt-api:$jwtVersion")
+    runtimeOnly("io.jsonwebtoken:jjwt-impl:$jwtVersion")
+    runtimeOnly("io.jsonwebtoken:jjwt-jackson:$jwtVersion")
+
     // 테스트 관련 의존성
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testImplementation("org.springframework.security:spring-security-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
 }
 
 kapt {

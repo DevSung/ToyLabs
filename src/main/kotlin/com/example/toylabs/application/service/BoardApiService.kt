@@ -1,6 +1,6 @@
 package com.example.toylabs.application.service
 
-import com.example.toylabs.application.dto.board.BoardResponse
+import com.example.toylabs.application.dto.board.response.BoardResponse
 import com.example.toylabs.application.dto.mapper.BoardDtoMapper
 import com.example.toylabs.domain.service.BoardService
 import org.springframework.stereotype.Service
@@ -16,6 +16,9 @@ class BoardApiService(
      */
     fun getAllBoardResponses(): List<BoardResponse> =
         boardService.getAllBoards().map(boardDtoMapper::toBoardResponse)
+
+    fun getBoardDetail(boardId: Long): BoardResponse =
+        boardDtoMapper.toBoardResponse(boardService.getBoardById(boardId))
 
 
 }

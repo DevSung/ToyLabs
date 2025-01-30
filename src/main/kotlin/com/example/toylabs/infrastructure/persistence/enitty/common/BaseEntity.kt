@@ -14,7 +14,7 @@ class BaseEntity(
     // 등록일
     @CreatedDate
     @Column(name = "created_at", updatable = false)
-    val createdAt: LocalDateTime? = null,
+    var createdAt: LocalDateTime? = null,
 
     // 수정일
     @LastModifiedDate

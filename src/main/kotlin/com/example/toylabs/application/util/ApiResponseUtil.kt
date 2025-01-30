@@ -4,14 +4,14 @@ import com.example.toylabs.application.dto.common.ApiResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 
-fun <T> T.success(): ResponseEntity<ApiResponse> {
+fun <T> T.toSuccessResponse(): ResponseEntity<ApiResponse> { // 기존 success()
     return ResponseEntity.ok(ApiResponse.success(this))
 }
 
-fun success(): ResponseEntity<ApiResponse> {
+fun defaultSuccessResponse(): ResponseEntity<ApiResponse> { // 기존 defaultSuccess()
     return ResponseEntity.ok(ApiResponse.default())
 }
 
-fun error(code: HttpStatus, message: String): ResponseEntity<ApiResponse> {
+fun errorResponse(code: HttpStatus, message: String): ResponseEntity<ApiResponse> { // 기존 error()
     return ResponseEntity.status(code).body(ApiResponse.error(code, message))
 }
